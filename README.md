@@ -1,13 +1,46 @@
 # X-Plane-UDP-communication-with-Arduino-Due
 Sketch for communication between X-Plane 11 and Arduino Due by UDP protocol.
+No plugins required.
 
-
+## Connect X-Plane with your Arduino
+![](images/GeneralDataOutput.PNG)
+1. Under **Network Configuration** check "Send network data output" checkbox :white_check_mark:
+2. In drop down menu set "Enter IP Address"
+3. Fill in IP address of your Arduino. Make sure it is in your local network range (not restricted by subnet mask).
+4. Set port number (for example 49004)
+5. In **General Data Output** tab check checkboxes in the last column **Network via UDP** that parameters you want to receive on your Arduino. For example if you want to receive speeds of your aircraft, check checkbox in the row with Index number 3.
+6. Set **Accept incoming connections**
+7. connect your PC and Arduino to the same wi-fi network. PC could be connected wirelessly or by wire, but Arduino hasto be connected by wire to the Ethernet shield like W5100.
+8. In the Arduino IDE go to **Tools > Board > Arduino ARM (32-bits boards) >Arduino Due Programming port**
+9. Set the same IP Address that you typed in step No. 3
 
 ## Receiving data from X-Plane
 
-![](images/GeneralDataOutput.PNG)  
 
-Data 32 bytes (8 segments x 4 bytes each)
+  
+
+### Header
+5 bytes
+
+Sample fragment of raw data of the first 5 bytes of the message:
+0x44 0x41 0x54 0x41 0x2a
+
+First 4 bytes are always for type of packet i.e:
+ - DATA
+ - DREF
+ - CMND
+ - MENU
+ - FAIL
+ - BOAT
+
+The 5th byte is NULL so we can ignore it
+
+### ID
+4 bytes, but **ONLY FIRST** byte is important! 
+
+
+### Data of actual message
+32 bytes (8 segments x 4 bytes each)
 
 Segments are Little endian
 
@@ -20,9 +53,9 @@ Segments are Little endian
 
 ## Sending data to X-Plane
 
-Supported message types
-1. DATA
-2. DREF
+Supported message types:
+- DATA
+- DREF
 
 
 In this example:
