@@ -64,7 +64,7 @@ DREFard2xp(value,DREF_name)
 
 #### Example:
 ```cpp
-void DREFard2xp(0,sim/cockpit2/controls/elevator_trim); //Setting elevator trim to 0 (middle of the range -1...1)
+void DREFard2xp(0,"sim/cockpit2/controls/elevator_trim"); //Setting elevator trim to 0 (middle of the range -1...1)
 ```
 Full [list of Datarefs](https://developer.x-plane.com/datarefs/)
 
