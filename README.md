@@ -36,7 +36,7 @@ float speeds = xp2ard({3,{0,1,2,5}); //returns first, second, third and sixth se
 ```
 Receiving multiple Indexes
 ```cpp
-float speeds_and_weather = xp2ard({3,6}); //returns matrix 2x8 of segments in the order of selected Indexes
+float speeds_and_weather = xp2ard({3,6}); //returns array 2x8 of segments in the order of selected Indexes
 ```
 
 ## Sending data to X-Plane
@@ -55,7 +55,7 @@ void ard2xp(4,{0,1,2,4},{1,2,3,4}); //overwriting first, second, third and fifth
 ```
 Over writing multiple indexes
 ```cpp
-void ard2xp({3,8},speeds_and_controls); //overwriting Indexes 3 and 8 with matrix 2x8
+void ard2xp({3,8},speeds_and_controls); //overwriting Indexes 3 and 8 with array 2x8
 ```
 
 
